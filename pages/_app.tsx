@@ -1,15 +1,13 @@
-import NavBar from "../components/NavBar";
+import NavBar from '../components/NavBar'
+import { AppProps } from 'next/app'
 
-interface AppProps {
-  pageProps: { [key: string]: any };
-  Components: any;
-}
-
-export default function APP({ Components, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <NavBar />
-      <Components {...pageProps} />
+      <Component {...pageProps} />
     </>
-  );
+  )
 }
+
+export default MyApp
