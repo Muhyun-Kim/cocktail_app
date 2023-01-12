@@ -1,7 +1,10 @@
+import Seo from "../components/Seo";
+
 export default function Home() {
   return (
     <div>
-      <h1 className="active">Hello</h1>
+        <Seo title="home" />
+      <h1 className="active">カクテルの種類</h1>
     </div>
   );
 }

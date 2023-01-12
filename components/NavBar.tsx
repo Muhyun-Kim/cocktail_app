@@ -5,7 +5,8 @@ export default function NavBar() {
   const router = useRouter();
   return (
     <nav>
-      <Link href="/">Home</Link>
+        <Link href="/">Home</Link>
+        <Link href=""></Link>
     </nav>
   );
 }
