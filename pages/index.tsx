@@ -1,22 +1,37 @@
 import { useEffect, useState } from "react";
-import Seo from "../components/Seo";
+
+interface IDrink {
+  idDrink: string;
+  strDrink: string;
+}
 
 export default function Home() {
-  const [drinks, setDrinks] = useState([]);
+  const [cocktails, setCocktails] = useState<IDrink[] | null>(null);
   useEffect(() => {
     (async () => {
-      const data = await (
+      const { drinks } = (await (
         await fetch(
-          "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a"
+          "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Vodka"
         )
-      ).json();
-      console.log(data);
+      ).json()) as { drinks: IDrink[] };
+      setCocktails(drinks);
     })();
   }, []);
   return (
     <div>
-      <Seo title="home" />
-      <h1 className="active">カクテルの種類</h1>
+      {!cocktails && <h4>Loading...</h4>}
+      {cocktails && cocktails.length > 0 && (
+        <>
+          <ul>
+            <li>vodca</li>
+            <li>Gin</li>
+            <li>Tequila</li>
+          </ul>
+          {cocktails.map((cocktail) => (
+            <div key={cocktail.idDrink}>{cocktail.strDrink}</div>
+          ))}
+        </>
+      )}
     </div>
   );
 }
