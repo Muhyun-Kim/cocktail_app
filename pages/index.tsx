@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 interface IDrink {
@@ -23,9 +24,9 @@ export default function Home() {
       {cocktails && cocktails.length > 0 && (
         <>
           <ul>
-            <li>vodca</li>
-            <li>Gin</li>
-            <li>Tequila</li>
+            <li><Link href={'/cocktailList/${cocktails.ingredient}'}>vodca</Link></li>
+            <li><Link href={'/cocktailList/${cocktails.ingredient}'}>gin</Link></li>
+            <li><Link href={'/cocktailList/${cocktails.ingredient}'}>techila</Link></li>
           </ul>
           {cocktails.map((cocktail) => (
             <div key={cocktail.idDrink}>{cocktail.strDrink}</div>
