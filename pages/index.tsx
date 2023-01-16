@@ -7,6 +7,7 @@ interface IDrink {
 }
 
 export default function Home() {
+  let spirits: string[] = ["vodca", "tequila", "gin"];
   const [cocktails, setCocktails] = useState<IDrink[] | null>(null);
   useEffect(() => {
     (async () => {
@@ -24,9 +25,11 @@ export default function Home() {
       {cocktails && cocktails.length > 0 && (
         <>
           <ul>
-            <li><Link href={'/cocktailList/${cocktails.ingredient}'}>vodca</Link></li>
-            <li><Link href={'/cocktailList/${cocktails.ingredient}'}>gin</Link></li>
-            <li><Link href={'/cocktailList/${cocktails.ingredient}'}>techila</Link></li>
+            {spirits.map((spirit) => (
+              <li>
+                <Link href={`/cocktailList/${spirit}`}>{spirit}</Link>
+              </li>
+            ))}
           </ul>
           {cocktails.map((cocktail) => (
             <div key={cocktail.idDrink}>{cocktail.strDrink}</div>
