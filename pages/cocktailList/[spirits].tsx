@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-
 export default function List() {
   interface IDrink {
     idDrink: string;
@@ -32,8 +31,8 @@ export default function List() {
       {cocktails && cocktails.length > 0 && (
         <>
           {cocktails.map((cocktail) => (
-            <Link href={`/cocktailList/Vodka`}>
-            <div key={cocktail.idDrink}>{cocktail.strDrink}</div>
+            <Link href={`/cocktailList/Vodka/[id]`} as={`/cocktailList/Vodka/${cocktail.idDrink}`}>
+              <div key={cocktail.idDrink}>{cocktail.strDrink}</div>
             </Link>
           ))}
         </>

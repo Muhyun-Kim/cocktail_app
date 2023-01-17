@@ -19,5 +19,6 @@ export default function CocktailList() {
     })();
   }, []);
   console.log(id);
+  console.log(router.query);
   return <div>ds</div>;
 }
