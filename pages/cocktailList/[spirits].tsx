@@ -8,30 +8,33 @@ export default function List() {
     strDrink: string;
   }
   const router = useRouter();
-  const { spirits } = useRouter().query;
-  console.log(spirits);
-  const spiritAPI: string = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Vodka`;
-
-  const [cocktails, setCocktails] = useState<IDrink[] | null>(null);
+  const { spirits } = router.query;
+  const [ingredient, setIngredient] = useState<IDrink[] | null>(null);
   useEffect(() => {
-    (async () => {
-      const { drinks } = (await (await fetch(spiritAPI)).json()) as {
-        drinks: IDrink[];
-      };
-      setCocktails(drinks);
-    })();
-  }, []);
-  console.log(cocktails);
-  console.log(spiritAPI);
-  console.log(router.query);
+    if (typeof spirits !== "undefined") {
+      (async () => {
+        const response = await fetch(
+          `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${spirits}`
+        );
+        const { drinks } = await response.json();
+        if (Array.isArray(drinks) && drinks.length > 0) {
+          setIngredient(drinks);
+        }
+      })();
+    }
+  }, [spirits]);
+  console.log(router);
+  console.log(spirits);
 
   return (
     <div>
-      {!cocktails && <h4>Loading...</h4>}
-      {cocktails && cocktails.length > 0 && (
+      {ingredient && ingredient.length > 0 && (
         <>
-          {cocktails.map((cocktail) => (
-            <Link href={`/cocktailList/Vodka/[id]`} as={`/cocktailList/Vodka/${cocktail.idDrink}`}>
+          {ingredient.map((cocktail) => (
+            <Link
+              href={`/cocktailList/${spirits}/${cocktail.idDrink}`}
+              as={`/cocktailList/${spirits}/${cocktail.idDrink}`}
+            >
               <div key={cocktail.idDrink}>{cocktail.strDrink}</div>
             </Link>
           ))}

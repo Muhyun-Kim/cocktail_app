@@ -8,17 +8,26 @@ export default function CocktailList() {
   }
   const router = useRouter();
   const { id } = router.query;
-  const cocktailAPI: string = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=552`;
   const [cocktails, setCocktails] = useState<IDrink[] | null>(null);
+
   useEffect(() => {
-    (async () => {
-      const { drinks } = await (await fetch(cocktailAPI)).json();
-      setCocktails(drinks);
-      setCocktails(drinks);
-      console.log(cocktails);
-    })();
-  }, []);
-  console.log(id);
-  console.log(router.query);
-  return <div>ds</div>;
+    if (typeof id !== "undefined") {
+      (async () => {
+        const response = await fetch(
+          `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+        );
+        const { drinks } = await response.json();
+        if (Array.isArray(drinks) && drinks.length > 0) {
+          setCocktails(drinks);
+        }
+      })();
+    }
+  }, [id]);
+  console.log(cocktails);
+
+  return (
+    <>
+      <div>{cocktails && cocktails[0].strDrink}</div>
+    </>
+  );
 }
