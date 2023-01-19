@@ -1,3 +1,9 @@
+/**
+ * Author : muhyun-kim
+ * Modified : 2023/01/19
+ * Function : アプリのメイン画面。材料に使うスピリッツを選択できる。
+ */
+
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -19,7 +25,7 @@ export default function Home() {
     <div>
       <ul>
         {spirits.map((spirit) => (
-          <div onClick={() => onClick(spirit) }>
+          <div onClick={() => onClick(spirit)}>
             <li>
               <Link href={`/cocktailList/${spirit}`}>{spirit}</Link>
             </li>

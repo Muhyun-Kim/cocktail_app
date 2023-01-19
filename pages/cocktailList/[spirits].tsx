@@ -1,3 +1,9 @@
+/**
+ * Author : muhyun-kim
+ * Modified : 2023/01/19
+ * Function : homeからスピリッツを選んだ際に遷移する画面
+ */
+
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -7,9 +13,11 @@ export default function List() {
     idDrink: string;
     strDrink: string;
   }
+
   const router = useRouter();
   const { spirits } = router.query;
   const [ingredient, setIngredient] = useState<IDrink[] | null>(null);
+  
   useEffect(() => {
     if (typeof spirits !== "undefined") {
       (async () => {
@@ -35,7 +43,7 @@ export default function List() {
               href={`/cocktailList/${spirits}/${cocktail.idDrink}`}
               as={`/cocktailList/${spirits}/${cocktail.idDrink}`}
             >
-              <div key={cocktail.idDrink}>{cocktail.strDrink}</div>
+              <div key={cocktail.idDrink}>11</div>
             </Link>
           ))}
         </>
