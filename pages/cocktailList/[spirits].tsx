@@ -1,12 +1,11 @@
 /**
  * Author : muhyun-kim
- * Modified : 2023/01/19
+ * Modified : 2023/01/20
  * Function : homeからスピリッツを選んだ際に遷移する画面
  */
 
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 
 export default function List() {
   interface IDrink {
@@ -15,14 +14,14 @@ export default function List() {
   }
 
   const router = useRouter();
-  const { spirits } = router.query;
+  const { spirit } = router.query;
   const [ingredient, setIngredient] = useState<IDrink[] | null>(null);
   
   useEffect(() => {
-    if (typeof spirits !== "undefined") {
+    if (typeof spirit !== "undefined") {
       (async () => {
         const response = await fetch(
-          `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${spirits}`
+          `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${spirit}`
         );
         const { drinks } = await response.json();
         if (Array.isArray(drinks) && drinks.length > 0) {
@@ -30,21 +29,17 @@ export default function List() {
         }
       })();
     }
-  }, [spirits]);
-  console.log(router);
-  console.log(spirits);
+  }, [spirit]);
+  console.log(router.query)
+  console.log(spirit)
+  console.log(ingredient)
 
   return (
     <div>
       {ingredient && ingredient.length > 0 && (
         <>
           {ingredient.map((cocktail) => (
-            <Link
-              href={`/cocktailList/${spirits}/${cocktail.idDrink}`}
-              as={`/cocktailList/${spirits}/${cocktail.idDrink}`}
-            >
-              <div key={cocktail.idDrink}>11</div>
-            </Link>
+              <div key={cocktail.idDrink}>{cocktail.strDrink}</div>
           ))}
         </>
       )}
