@@ -1,6 +1,6 @@
 /**
  * Author : muhyun-kim
- * Modified : 2023/01/20
+ * Modified : 2023/01/21
  * Function : homeからスピリッツを選んだ際に遷移する画面
  */
 
@@ -8,15 +8,21 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 export default function List() {
-  interface IDrink {
+  interface cocktailInfo {
     idDrink: string;
     strDrink: string;
   }
 
   const router = useRouter();
   const { spirit } = router.query;
-  const [ingredient, setIngredient] = useState<IDrink[] | null>(null);
-  
+  const [ingredient, setIngredient] = useState<cocktailInfo[] | null>(null);
+  const onClick = (cocktail: string, idDrink: string) => {
+    router.push({
+      pathname: `/cocktailList/${spirit}/${idDrink}`,
+      query: { cocktail },
+    });
+  };
+
   useEffect(() => {
     if (typeof spirit !== "undefined") {
       (async () => {
@@ -30,16 +36,22 @@ export default function List() {
       })();
     }
   }, [spirit]);
-  console.log(router.query)
-  console.log(spirit)
-  console.log(ingredient)
+  console.log(spirit);
+  console.log(ingredient);
 
   return (
     <div>
       {ingredient && ingredient.length > 0 && (
         <>
           {ingredient.map((cocktail) => (
-              <div key={cocktail.idDrink}>{cocktail.strDrink}</div>
+            <div
+              className="cocktailName"
+              key={cocktail.idDrink}
+              onClick={() => onClick(cocktail.strDrink, cocktail.idDrink)}
+            >
+              {cocktail.strDrink}
+              {cocktail.idDrink}
+            </div>
           ))}
         </>
       )}
