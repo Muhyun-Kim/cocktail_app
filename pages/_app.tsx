@@ -1,5 +1,5 @@
-import NavBar from '../components/NavBar'
-import { AppProps } from 'next/app'
+import NavBar from "../components/NavBar";
+import { AppProps } from "next/app";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <NavBar />
       <Component {...pageProps} />
     </>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;

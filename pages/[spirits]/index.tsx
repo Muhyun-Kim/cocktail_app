@@ -6,6 +6,7 @@
 
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Link from 'next/link'
 
 export default function List() {
   interface cocktailInfo {
@@ -16,12 +17,7 @@ export default function List() {
   const router = useRouter();
   const { spirit } = router.query;
   const [ingredient, setIngredient] = useState<cocktailInfo[] | null>(null);
-  const onClick = (cocktail: string, idDrink: string) => {
-    router.push({
-      pathname: `/cocktailList/${spirit}/${idDrink}`,
-      query: { cocktail },
-    });
-  };
+
 
   useEffect(() => {
     if (typeof spirit !== "undefined") {
@@ -33,24 +29,19 @@ export default function List() {
         if (Array.isArray(drinks) && drinks.length > 0) {
           setIngredient(drinks);
         }
-      })();
+      })(); 
     }
-  }, [spirit]);
-  console.log(spirit);
-  console.log(ingredient);
-
+  }, [spirit])
+  console.log(ingredient)
   return (
     <div>
       {ingredient && ingredient.length > 0 && (
         <>
           {ingredient.map((cocktail) => (
-            <div
-              className="cocktailName"
-              key={cocktail.idDrink}
-              onClick={() => onClick(cocktail.strDrink, cocktail.idDrink)}
-            >
-              {cocktail.strDrink}
-              {cocktail.idDrink}
+            <div className="cocktailName" key={cocktail.idDrink}>
+              <Link href={`/${spirit}/${cocktail.idDrink}`}>
+                {cocktail.strDrink}
+              </Link>
             </div>
           ))}
         </>

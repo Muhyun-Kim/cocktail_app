@@ -1,25 +1,27 @@
 /**
  * Author : muhyun-kim
- * Modified : 2023/01/20
+ * Modified : 2023/01/21
  * Function : アプリのメイン画面。材料に使うスピリッツを選択できる。
  */
 
 import { useRouter } from "next/router";
 
 export default function Home() {
-  let spirits: string[] = ["Vodka", "Gin", "Tequila"];
+  let spiritList: string[] = ["Vodka", "Gin", "Tequila"];
   const router = useRouter();
   const onClick = (spirits: string) => {
     router.push({
-      pathname: `/cocktailList/${spirits}`,
+      pathname: `/${spirits}`,
       query: { spirit: spirits },
     });
   };
 
+  console.log(router);
+
   return (
     <div>
       <ul>
-        {spirits.map((spirits) => (
+        {spiritList.map((spirits) => (
           <li onClick={() => onClick(spirits)}>{spirits}</li>
         ))}
       </ul>
