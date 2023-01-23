@@ -20,6 +20,7 @@ export default function Home() {
 
   return (
     <div>
+      <span>Choice your favorite spirit</span>
       <ul>
         {spiritList.map((spirits) => (
           <li onClick={() => onClick(spirits)}>{spirits}</li>

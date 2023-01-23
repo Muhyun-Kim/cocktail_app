@@ -6,6 +6,7 @@
 
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Loading from "../../components/Loading";
 
 export default function detailCocktail() {
   interface Detail {
@@ -22,11 +23,31 @@ export default function detailCocktail() {
     strIngredient3: string;
     strIngredient4: string;
     strIngredient5: string;
+    strIngredient6: string;
+    strIngredient7: string;
+    strIngredient8: string;
+    strIngredient9: string;
+    strIngredient10: string;
+    strIngredient11: string;
+    strIngredient12: string;
+    strIngredient13: string;
+    strIngredient14: string;
+    strIngredient15: string;
     strMeasure1: string;
     strMeasure2: string;
     strMeasure3: string;
     strMeasure4: string;
     strMeasure5: string;
+    strMeasure6: string;
+    strMeasure7: string;
+    strMeasure8: string;
+    strMeasure9: string;
+    strMeasure10: string;
+    strMeasure11: string;
+    strMeasure12: string;
+    strMeasure13: string;
+    strMeasure14: string;
+    strMeasure15: string;
   }
 
   const router = useRouter();
@@ -50,11 +71,13 @@ export default function detailCocktail() {
   if (detail) {
     return (
       <div>
+        <span>This is receipe!</span>
         <div>
           {detail.drinks.map((drink) => (
             <div>
               <img src={drink.strDrinkThumb} />
               <div>{drink.strDrink}</div>
+              <div>{drink.strGlass}</div>
               {drink.strIngredient1 && (
                 <div>
                   {drink.strIngredient1}:{drink.strMeasure1}
@@ -80,12 +103,22 @@ export default function detailCocktail() {
                   {drink.strIngredient5}:{drink.strMeasure5}
                 </div>
               )}
+              {drink.strIngredient6 && (
+                <div>
+                  {drink.strIngredient6}:{drink.strMeasure6}
+                </div>
+              )}
             </div>
           ))}
         </div>
       </div>
     );
   } else {
-    return <div> Loading... </div>;
+    return (
+      <div>
+        {" "}
+        <Loading />
+      </div>
+    );
   }
 }

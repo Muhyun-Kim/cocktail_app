@@ -7,6 +7,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Loading from "../../components/Loading";
 
 export default function List() {
   interface cocktailInfo {
@@ -37,6 +38,7 @@ export default function List() {
   if (ingredient) {
     return (
       <div>
+        <span>choice cocktail</span>
         {ingredient && ingredient.length > 0 && (
           <>
             {ingredient.map((cocktail) => (
@@ -48,6 +50,12 @@ export default function List() {
             ))}
           </>
         )}
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <Loading />
       </div>
     );
   }
