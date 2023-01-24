@@ -1,6 +1,6 @@
 /**
  * Author : muhyun-kim
- * Modified : 2023/01/21
+ * Modified : 2023/01/24
  * Function : homeからスピリッツを選んだ際に遷移する画面
  */
 
@@ -13,6 +13,7 @@ export default function List() {
   interface cocktailInfo {
     idDrink: string;
     strDrink: string;
+    strDrinkThumb: string;
   }
 
   const router = useRouter();
@@ -37,19 +38,24 @@ export default function List() {
 
   if (ingredient) {
     return (
-      <div>
-        <span>choice cocktail</span>
-        {ingredient && ingredient.length > 0 && (
-          <>
-            {ingredient.map((cocktail) => (
-              <div className="cocktailName" key={cocktail.idDrink}>
-                <Link href={`/${spirit}/${cocktail.idDrink}`}>
-                  {cocktail.strDrink}
-                </Link>
-              </div>
-            ))}
-          </>
-        )}
+      <div className="flex flex-col items-center">
+        <div>choice cocktail</div>
+        <div className="grid grid-cols-3">
+          {ingredient && ingredient.length > 0 && (
+            <>
+              {ingredient.map((cocktail) => (
+                <div className="flex p-4" key={cocktail.idDrink}>
+                  <Link href={`/${spirit}/${cocktail.idDrink}`}>
+                    <div className="flex justify-center">
+                      {cocktail.strDrink}
+                    </div>
+                    <img src={cocktail.strDrinkThumb} />
+                  </Link>
+                </div>
+              ))}
+            </>
+          )}
+        </div>
       </div>
     );
   } else {

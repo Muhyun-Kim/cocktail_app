@@ -11,7 +11,7 @@ export default function Home() {
   const router = useRouter();
   const onClick = (spirits: string) => {
     router.push({
-      pathname: `/${spirits}`,
+      pathname: `/${spirits}`,  
       query: { spirit: spirits },
     });
   };
@@ -19,13 +19,13 @@ export default function Home() {
   console.log(router);
 
   return (
-    <div>
-      <span>Choice your favorite spirit</span>
-      <ul>
-        {spiritList.map((spirits) => (
-          <li onClick={() => onClick(spirits)}>{spirits}</li>
-        ))}
-      </ul>
+    <div className="flex flex-col items-center">
+      <span className="pb-4">好きなスピリッツを選んでください</span>
+        <ul className="flex items-center">
+          {spiritList.map((spirits) => (
+            <li onClick={() => onClick(spirits)} className="px-20">{spirits}</li>
+          ))}
+        </ul>
     </div>
   );
 }

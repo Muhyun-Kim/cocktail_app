@@ -6,12 +6,15 @@
 
 import NavBar from "../components/NavBar";
 import { AppProps } from "next/app";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <NavBar />
-      <Component {...pageProps} />
+      <div className="px-20">
+        <NavBar />
+        <Component {...pageProps} />
+      </div>
     </>
   );
 }

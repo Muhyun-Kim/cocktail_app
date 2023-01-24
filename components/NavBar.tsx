@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export default function NavBar() {
   return (
-    <nav>
+    <nav className="flex items-center justify-center m-3 text-xl">
         <Link href="/">Home</Link>
     </nav>
   );
