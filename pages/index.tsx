@@ -23,7 +23,7 @@ export default function Home() {
       <span className="pb-4">好きなスピリッツを選んでください</span>
         <ul className="flex items-center">
           {spiritList.map((spirits) => (
-            <li onClick={() => onClick(spirits)} className="px-20">{spirits}</li>
+            <li onClick={() => onClick(spirits)} className="px-5">{spirits}</li>
           ))}
         </ul>
     </div>

@@ -70,11 +70,11 @@ export default function detailCocktail() {
   console.log(detail?.drinks[0].strDrink);
   if (detail) {
     return (
-      <div>
-        <span>This is receipe!</span>
+      <div className="flex flex-col">
+        <div className="flex justify-center">This is receipe!</div>
         <div>
           {detail.drinks.map((drink) => (
-            <div>
+            <div className="flex flex-col items-center">
               <img src={drink.strDrinkThumb} />
               <div>{drink.strDrink}</div>
               <div>{drink.strGlass}</div>

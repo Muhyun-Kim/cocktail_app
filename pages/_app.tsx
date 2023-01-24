@@ -11,7 +11,7 @@ import "../styles/globals.css";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <div className="px-20">
+      <div className="flex flex-col px-20">
         <NavBar />
         <Component {...pageProps} />
       </div>
