@@ -1,17 +1,18 @@
 /**
  * Author : muhyun-kim
- * Modified : 2023/01/21
+ * Modified : 2023/01/25
  * Function : アプリのメイン画面。材料に使うスピリッツを選択できる。
  */
 
 import { useRouter } from "next/router";
 
 export default function Home() {
+  //カクテル作りのベースとなるスピリッツリスト
   let spiritList: string[] = ["Vodka", "Gin", "Tequila"];
   const router = useRouter();
   const onClick = (spirits: string) => {
     router.push({
-      pathname: `/${spirits}`,  
+      pathname: `/${spirits}`,
       query: { spirit: spirits },
     });
   };
@@ -21,11 +22,13 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center">
       <span className="pb-4">好きなスピリッツを選んでください</span>
-        <ul className="flex items-center">
-          {spiritList.map((spirits) => (
-            <li onClick={() => onClick(spirits)} className="px-5">{spirits}</li>
-          ))}
-        </ul>
+      <ul className="flex items-center">
+        {spiritList.map((spirits) => (
+          <li onClick={() => onClick(spirits)} className="px-5">
+            {spirits}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

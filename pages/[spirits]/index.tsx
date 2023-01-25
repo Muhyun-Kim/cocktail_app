@@ -40,7 +40,7 @@ export default function List() {
     return (
       <div className="flex flex-col items-center">
         <div>choice cocktail</div>
-        <div className="grid grid-cols-3">
+        <div className="grid grid-cols-3 max-md:grid-cols-1">
           {ingredient && ingredient.length > 0 && (
             <>
               {ingredient.map((cocktail) => (
