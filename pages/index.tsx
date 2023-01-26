@@ -1,6 +1,6 @@
 /**
  * Author : muhyun-kim
- * Modified : 2023/01/25
+ * Modified : 2023/01/26
  * Function : アプリのメイン画面。材料に使うスピリッツを選択できる。
  */
 
