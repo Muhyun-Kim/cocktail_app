@@ -1,6 +1,6 @@
 /**
  * Author : muhyun-kim
- * Modified : 2023/01/22
+ * Modified : 2023/01/26
  * Function : カクテルの詳細表示
  */
 
@@ -74,40 +74,42 @@ export default function detailCocktail() {
         <div className="flex justify-center">This is receipe!</div>
         <div>
           {detail.drinks.map((drink) => (
-            <div className="flex flex-col items-center">
+            <div className="flex items-center">
               <img src={drink.strDrinkThumb} />
-              <div>{drink.strDrink}</div>
-              <div>{drink.strGlass}</div>
-              {drink.strIngredient1 && (
-                <div>
-                  {drink.strIngredient1}:{drink.strMeasure1}
-                </div>
-              )}
-              {drink.strIngredient2 && (
-                <div>
-                  {drink.strIngredient2}:{drink.strMeasure2}
-                </div>
-              )}
-              {drink.strIngredient3 && (
-                <div>
-                  {drink.strIngredient3}:{drink.strMeasure3}
-                </div>
-              )}
-              {drink.strIngredient4 && (
-                <div>
-                  {drink.strIngredient4}:{drink.strMeasure4}
-                </div>
-              )}
-              {drink.strIngredient5 && (
-                <div>
-                  {drink.strIngredient5}:{drink.strMeasure5}
-                </div>
-              )}
-              {drink.strIngredient6 && (
-                <div>
-                  {drink.strIngredient6}:{drink.strMeasure6}
-                </div>
-              )}
+              <div>
+                <div>{drink.strDrink}</div>
+                <div>{drink.strGlass}</div>
+                {drink.strIngredient1 && (
+                  <div>
+                    {drink.strIngredient1}:{drink.strMeasure1}
+                  </div>
+                )}
+                {drink.strIngredient2 && (
+                  <div>
+                    {drink.strIngredient2}:{drink.strMeasure2}
+                  </div>
+                )}
+                {drink.strIngredient3 && (
+                  <div>
+                    {drink.strIngredient3}:{drink.strMeasure3}
+                  </div>
+                )}
+                {drink.strIngredient4 && (
+                  <div>
+                    {drink.strIngredient4}:{drink.strMeasure4}
+                  </div>
+                )}
+                {drink.strIngredient5 && (
+                  <div>
+                    {drink.strIngredient5}:{drink.strMeasure5}
+                  </div>
+                )}
+                {drink.strIngredient6 && (
+                  <div>
+                    {drink.strIngredient6}:{drink.strMeasure6}
+                  </div>
+                )}
+              </div>
             </div>
           ))}
         </div>

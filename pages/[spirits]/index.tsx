@@ -44,12 +44,12 @@ export default function List() {
           {ingredient && ingredient.length > 0 && (
             <>
               {ingredient.map((cocktail) => (
-                <div className="flex p-4" key={cocktail.idDrink}>
+                <div className="flex m-5 bg-sky-50" key={cocktail.idDrink}>
                   <Link href={`/${spirit}/${cocktail.idDrink}`}>
                     <div className="flex justify-center">
                       {cocktail.strDrink}
                     </div>
-                    <img src={cocktail.strDrinkThumb} />
+                    <img src={cocktail.strDrinkThumb} className="shadow-2xl"/>
                   </Link>
                 </div>
               ))}
