@@ -20,7 +20,7 @@ export default function Home() {
   console.log(router);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center bg-orange-50">
       <span className="pb-4">好きなスピリッツを選んでください</span>
       <ul className="flex items-center">
         {spiritList.map((spirits, index) => (

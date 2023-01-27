@@ -23,10 +23,9 @@ export default function List() {
   useEffect(() => {
     if (typeof spirit !== "undefined") {
       (async () => {
-        const response = await fetch(
+        const { drinks } = await (await fetch(
           `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${spirit}`
-        );
-        const { drinks } = await response.json();
+        )).json();
         if (Array.isArray(drinks) && drinks.length > 0) {
           setIngredient(drinks);
         }
@@ -66,3 +65,4 @@ export default function List() {
     );
   }
 }
+

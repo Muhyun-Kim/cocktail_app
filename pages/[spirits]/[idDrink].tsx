@@ -72,10 +72,10 @@ export default function detailCocktail() {
     return (
       <div className="flex flex-col">
         <div className="flex justify-center">This is receipe!</div>
-        <div>
+        <div className="flex justify-center">
           {detail.drinks.map((drink) => (
-            <div className="flex items-center">
-              <img src={drink.strDrinkThumb} />
+            <div className="flex max-md:flex-col items-center">
+              <img src={drink.strDrinkThumb} className="h-40"/>
               <div>
                 <div>{drink.strDrink}</div>
                 <div>{drink.strGlass}</div>
