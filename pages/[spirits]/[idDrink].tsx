@@ -1,6 +1,6 @@
 /**
  * Author : muhyun-kim
- * Modified : 2023/01/26
+ * Modified : 2023/01/28
  * Function : カクテルの詳細表示
  */
 
@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Loading from "../../components/Loading";
 
-export default function detailCocktail() {
+export default function DetailCocktail() {
   interface Detail {
     drinks: cocktailInfo[];
   }
@@ -75,7 +75,7 @@ export default function detailCocktail() {
         <div className="flex justify-center">
           {detail.drinks.map((drink) => (
             <div className="flex max-md:flex-col items-center">
-              <img src={drink.strDrinkThumb} className="h-40"/>
+              <img src={drink.strDrinkThumb} className="h-40" />
               <div>
                 <div>{drink.strDrink}</div>
                 <div>{drink.strGlass}</div>
