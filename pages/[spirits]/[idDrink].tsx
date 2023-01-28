@@ -4,6 +4,9 @@
  * Function : カクテルの詳細表示
  */
 
+
+
+
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Loading from "../../components/Loading";
