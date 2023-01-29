@@ -78,8 +78,8 @@ export default function DetailCocktail() {
               key={drink.idDrink}
               className="flex max-md:flex-col items-center"
             >
-              <img src={drink.strDrinkThumb} className="h-40" />
-              <div>
+              <img src={drink.strDrinkThumb} className="h-40 mr-6" />
+              <div className="flex flex-col">
                 <div>{drink.strDrink}</div>
                 <div>{drink.strGlass}</div>
                 {drink.strIngredient1 && (

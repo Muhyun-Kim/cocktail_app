@@ -5,13 +5,15 @@
  */
 
 import Link from "next/link";
-import Image from 'next/image'
 
 export default function NavBar() {
   return (
     <nav className="flex items-center justify-center text-xl mb-3 h-20">
-      <Link href="/">
-        <img src="/Users/kim_muhyeon/my_project/react/cocktail_app/public/navIcon.svg" />
+      <Link href="/" >
+        <img
+          src="https://cdn.pixabay.com/photo/2013/07/12/19/19/martini-154548_1280.png"
+          className="h-16"
+        />
       </Link>
     </nav>
   );
