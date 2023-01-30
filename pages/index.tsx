@@ -1,6 +1,6 @@
 /**
  * Author : muhyun-kim
- * Modified : 2023/01/26
+ * Modified : 2023/01/30
  * Function : アプリのメイン画面。材料に使うスピリッツを選択できる。
  */
 
@@ -30,8 +30,6 @@ export default function Home() {
       query: { spirit: spirits },
     });
   };
-
-  console.log(router);
 
   return (
     <div className="flex flex-col items-center bg-orange-50">

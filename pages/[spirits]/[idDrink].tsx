@@ -1,6 +1,6 @@
 /**
  * Author : muhyun-kim
- * Modified : 2023/01/28
+ * Modified : 2023/01/30
  * Function : カクテルの詳細表示
  */
 
@@ -66,8 +66,6 @@ export default function DetailCocktail() {
     }
   }, [idDrink]);
 
-  console.log("deail=", detail);
-  console.log(detail?.drinks[0].strDrink);
   if (detail) {
     return (
       <div className="flex flex-col">

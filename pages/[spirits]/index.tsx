@@ -1,6 +1,6 @@
 /**
  * Author : muhyun-kim
- * Modified : 2023/01/24
+ * Modified : 2023/01/30
  * Function : homeからスピリッツを選んだ際に遷移する画面
  */
 
@@ -23,17 +23,17 @@ export default function List() {
   useEffect(() => {
     if (typeof spirit !== "undefined") {
       (async () => {
-        const { drinks } = await (await fetch(
-          `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${spirit}`
-        )).json();
+        const { drinks } = await (
+          await fetch(
+            `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${spirit}`
+          )
+        ).json();
         if (Array.isArray(drinks) && drinks.length > 0) {
           setIngredient(drinks);
         }
       })();
     }
   }, [spirit]);
-
-  console.log(ingredient);
 
   if (ingredient) {
     return (
@@ -48,7 +48,7 @@ export default function List() {
                     <div className="flex justify-center">
                       {cocktail.strDrink}
                     </div>
-                    <img src={cocktail.strDrinkThumb} className="shadow-2xl"/>
+                    <img src={cocktail.strDrinkThumb} className="shadow-2xl" />
                   </Link>
                 </div>
               ))}
@@ -65,4 +65,3 @@ export default function List() {
     );
   }
 }
-
